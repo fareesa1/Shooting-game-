@@ -47,6 +47,8 @@ function draw() {
 camera.on()
 camera.x = player.x 
 
+  player.x = mouseX;
+  
 camera.y =player.y 
   // controls
   // up arrow
@@ -122,3 +124,14 @@ function mouseDragged(){
   bulletGroup.add(bullet)
   bullet.addImage(bulletImage)
 }
+
+function mouseClicked(){
+  player.y-=7
+}
+
+
+
+
+
+
+
