@@ -26,26 +26,40 @@ function setup() {
   bg.scale = 2.2
   
 
-  leftButton = createSprite(700,500)
-  leftButton.addImage(leftButtonImage)
-  rightButton = createSprite(700,500)
-  rightButton.addImage(rightButtonImage)
-  rightButton.mirrorX(-1)
-  upButton = createSprite(680,500)
-  upButton.addImage(leftButtonImage)
-  downButton = createSprite(700,500)
-  downButton.addImage(leftButtonImage)
+  // leftButton = createSprite(700,500)
+  // leftButton.addImage(leftButtonImage)
+  // rightButton = createSprite(700,500)
+  // rightButton.addImage(rightButtonImage)
+  // rightButton.mirrorX(-1)
+  // upButton = createSprite(680,500)
+  // upButton.addImage(leftButtonImage)
+  // downButton = createSprite(700,500)
+  // downButton.addImage(leftButtonImage)
+
+  leftButton = createButton("L")
   
-  leftButton.debug = true
-  leftButton.setCollider('circle',-20,-50,50)
-  rightButton.setCollider('circle',-20,-50,50)
-  upButton.setCollider('circle',-20,-50,50)
-  downButton.setCollider('circle',-20,-50,50)
+  // leftButton.addImage(leftButtonImage)
+  rightButton = createButton("R")
+ 
+  // rightButton.addImage(rightButtonImage)
+  // rightButton.mirrorX(-1)
+  upButton = createButton("U")
+
+  // upButton.addImage(leftButtonImage)
+  downButton = createButton("D")
+
+  // downButton.addImage(leftButtonImage)
   
-  rightButton.scale = 0.3
-  leftButton.scale = 0.3
-  upButton.scale = 0.3
-  downButton.scale = 0.3
+  // leftButton.debug = true
+  // leftButton.setCollider('circle',-20,-50,50)
+  // rightButton.setCollider('circle',-20,-50,50)
+  // upButton.setCollider('circle',-20,-50,50)
+  // downButton.setCollider('circle',-20,-50,50)
+  
+  // rightButton.scale = 0.3
+  // leftButton.scale = 0.3
+  // upButton.scale = 0.3
+  // downButton.scale = 0.3
 
   enemyGroup = createGroup();
   ground = createSprite(400, 460, 800, 40)
@@ -69,43 +83,49 @@ function draw() {
 
 
   background(255, 255, 255);
+  leftButton.position(player.x+240,player.y+30)
+  rightButton.position(player.x+290,player.y+30)
+  upButton.position(player.x+250,player.y-20)
+  downButton.position(player.x+280,player.y+50)
+  downButton.mousePressed(()=>{
+    player.y += 7
+  })
+  upButton.mousePressed(()=>{
+    player.y -= 7
+  })
+  rightButton.mousePressed(()=>{
+    player.x += 7
+  })
 
+  leftButton.mousePressed(()=>{
+    player.x -= 7
+  })
 // setting up camera
 camera.on()
 camera.x = player.x 
 
-leftButton.x =player.x+240
-rightButton.x =player.x+290
-upButton.x =player.x+250
-downButton.x =player.x+280
-
-leftButton.y =player.y+30
-rightButton.y =player.y+30
-upButton.y =player.y-20
-downButton.y =player.y+50
-
-upButton.rotation = 90
-downButton.rotation = -90
+// upButton.rotation = 90
+// downButton.rotation = -90
 
 camera.y =player.y 
   // controls
   // up arrow
-  if (keyDown("up") || touches.length > 0) {
+  if (keyDown("up")) {
     player.y -= 7
-    rightButton.destroy()
+
     
   }
   // down arrow
-  if (keyDown("down") || mousePressedOver(downButton) ) {
+  if (keyDown("down")  ) {
     player.y += 7
   }
   // left 
-  if (keyDown("left") || mousePressedOver(leftButton) ) {
+  if (keyDown("left") ) {
     player.x -= 7
   }
 
   // right
-  if (keyDown("right") || mousePressedOver(rightButton) ) {
+  if (keyDown("right") ) {
     player.x += 7
   }
   // junp
