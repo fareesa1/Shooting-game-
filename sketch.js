@@ -90,8 +90,10 @@ downButton.rotation = -90
 camera.y =player.y 
   // controls
   // up arrow
-  if (keyDown("up") || mousePressedOver(upButton)) {
+  if (keyDown("up") || touches.length > 0) {
     player.y -= 7
+    rightButton.destroy()
+    
   }
   // down arrow
   if (keyDown("down") || mousePressedOver(downButton) ) {
